@@ -20,7 +20,7 @@ class BitmapFont:
         img = Image.new('1', size=PyxelSpec.Image.Size)
         draw = ImageDraw.Draw(img)
         self.__load(draw, font)
-        self.__data = numpy.array(img.getdata()).reshape(PyxelSpec.Image.Size[0], PyxelSpec.Image.Size[1])
+        self.__data = numpy.array(img.getdata()).reshape(PyxelSpec.Image.Size[1], PyxelSpec.Image.Size[0])
         self.__img = img
         self.__img.save(os.path.splitext(self.__file)[0] + '.png')
     def __load(self, draw=None, font=None):
@@ -37,7 +37,7 @@ class BitmapFont:
     def load_from_png(self):
         self.__load()
         img = Image.open(self.__file)
-        self.__data = numpy.array(img.getdata()).reshape(PyxelSpec.Image.Size[0], PyxelSpec.Image.Size[1])
+        self.__data = numpy.array(img.getdata()).reshape(PyxelSpec.Image.Size[1], PyxelSpec.Image.Size[0])
     @property
     def FilePath(self): return self.__file
     @property
